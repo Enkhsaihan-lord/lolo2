@@ -1,0 +1,41 @@
+generator client {
+  provider   = "prisma-client"
+  output     = "./generated"
+  engineType = "client"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model MovieInfo {
+  id          String @id @default(cuid())
+  name        String
+  description String
+  image       String
+  url         String
+}
+
+model User {
+  id       Int    @id @default(autoincrement())
+  email    String
+  password String
+  name     String
+}
+
+enum role {
+  Admin
+  SuperAdmin
+  user
+}
+
+enum set {
+  Premium
+  nude
+}
+
+enum movieType {
+  mongol
+  gadaad
+  adults
+}
