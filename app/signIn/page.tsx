@@ -6,7 +6,7 @@ const Page = () => {
     email: "",
     password: "",
   });
-  const handleInputValue = async (e) => {
+  const handleInputValue = async (e: { target: { name: any; value: any } }) => {
     const { name, value } = e.target;
     if (name === "email") {
       setUserInfo({ ...userInfo, email: value });
@@ -17,7 +17,7 @@ const Page = () => {
   };
   const loginUser = async () => {
     const res = await fetch(`/api/movieUser/signIn`);
-    const data = res.json();
+    const data = await res.json();
     setUserInfo(data);
   };
   return (
@@ -54,7 +54,6 @@ const Page = () => {
               onChange={handleInputValue}
             />
           </div>
-
           <button
             type="submit"
             onClick={loginUser}
