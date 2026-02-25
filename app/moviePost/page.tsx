@@ -1,5 +1,13 @@
 "use client";
 
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { upload } from "@vercel/blob/client";
 import { NextResponse } from "next/server";
 import { ChangeEvent, useState } from "react";
@@ -69,7 +77,19 @@ const Page = () => {
               placeholder="Movie name..."
             />
           </div>
-
+          <div>
+            <Select>
+              <SelectTrigger className="w-[180px]">
+                <SelectValue placeholder="Theme" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectGroup>
+                  <SelectItem value="Normal">Normal</SelectItem>
+                  <SelectItem value="Premium">Premium</SelectItem>
+                </SelectGroup>
+              </SelectContent>
+            </Select>
+          </div>
           <div className="space-y-2">
             <label className="text-sm font-medium text-zinc-400 ml-1">
               Постер URL

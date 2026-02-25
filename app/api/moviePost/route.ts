@@ -1,6 +1,13 @@
 import prisma from "@/lib/prisma";
 import { NextRequest, NextResponse } from "next/server";
-
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 export const POST = async (req: NextRequest) => {
   const { name, description, url, image } = await req.json();
   const created = await prisma.movieInfo.create({
