@@ -1,12 +1,11 @@
 generator client {
-  provider   = "prisma-client"
-  output     = "./generated"
-  engineType = "client"
+  provider = "prisma-client-js"
 }
 
 datasource db {
   provider = "postgresql"
 }
+
 
 model MovieInfo {
   id          String @id @default(cuid())
@@ -21,6 +20,8 @@ model User {
   email    String
   password String
   name     String
+  role     role   @default(user)   // Admin, SuperAdmin, user
+  set set @default(normal)
 }
 
 enum role {
@@ -31,11 +32,5 @@ enum role {
 
 enum set {
   Premium
-  nude
-}
-
-enum movieType {
-  mongol
-  gadaad
-  adults
+  normal
 }

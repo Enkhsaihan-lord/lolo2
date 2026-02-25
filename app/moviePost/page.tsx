@@ -1,5 +1,6 @@
 "use client";
 
+import { upload } from "@vercel/blob/client";
 import { NextResponse } from "next/server";
 import { ChangeEvent, useState } from "react";
 const Page = () => {
@@ -35,6 +36,7 @@ const Page = () => {
     const data = await res.json();
     setMovieInfo(data);
   };
+
   const uploadImage = async (res: NextResponse) => {
     const uploaded = await upload(file.name, file, {
       access: "public",
@@ -43,7 +45,7 @@ const Page = () => {
     const data = await res.json();
     setFile(data);
   };
-  console.log(setFile); 
+  console.log(setFile);
   return (
     <div className="min-h-screen bg-[#0a0a0a] text-white flex items-center justify-center p-6">
       <div className="w-full max-w-md bg-[#161616] border border-zinc-800 rounded-2xl p-8 shadow-2xl">

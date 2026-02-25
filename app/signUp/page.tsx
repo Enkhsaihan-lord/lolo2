@@ -31,7 +31,7 @@ const SignUpPage = () => {
   };
   const createUser = async () => {
     if (userInfo.password !== userInfo.confirmPassword) {
-      setPerror("nuuts ug zoroj baina!!");
+      console.log("nuuts ug zoroj baina!!");
     } else {
       const res = await fetch(`/api/movieUser/signUp`, {
         method: "POST",
