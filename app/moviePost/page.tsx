@@ -12,8 +12,10 @@ const Page = () => {
   const [file, setFile] = useState<File | null>(null);
   const handleFile = (e: ChangeEvent<HTMLInputElement>) => {
     const selectedFile = e.target.files?.[0];
-    if (!selectedFile) return;
-    setFile(selectedFile);
+    if (selectedFile) {
+      setFile(selectedFile);
+    } else {
+    }
   };
   const inputHandleValue = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -36,15 +38,13 @@ const Page = () => {
     const data = await res.json();
     setMovieInfo(data);
   };
-
-  const uploadImage = async (res: NextResponse) => {
-    const uploaded = await upload(file.name, file, {
-      access: "public",
-      handleUploadUrl: "/api/upload",
+  const fetchVercel = async () => {
+    const res = await fetch(`/api/images/upload`, {
+      headers: { "Content-type": "application/json" },
+      body: JSON.stringify(file),
     });
-    const data = await res.json();
-    setFile(data);
   };
+
   console.log(setFile);
   return (
     <div className="min-h-screen bg-[#0a0a0a] text-white flex items-center justify-center p-6">
